@@ -7,12 +7,12 @@ Self-Driving Car Engineer Nanodegree Program
 
 1. Describe the effect each of the P, I, D components had in your implementation.
   P - This parameter is directly proportional to the CTE. The further the car is from the center, the larger the steering angle is to return the car to the center.
-  I - It seems that there is no real drif in this project so this parameter had little impact.
+  I - It seems that there is no real drift in this project so this parameter had little impact once the vehicle was traveling. A large  value for I would impact the vehicle from its starting position though. Because the car starts offset from the center of the track, a large I would cause the car to turn to the right in an unrecoverable manner. 
   D - This parameter affects the steering depending on the delta CTE of the current measurement and the former.
       If the CTE is increasing(moving away from center) this parameter increases the steering angle back towards the center, as the delta CTE becomes negative, it reduces the angle to prevent overshoot.
 2. Describe how the final hyperparameters were chosen.
   I started with the parameters given in lecture, which actually performed fairly well at low speeds. I then found the maximum speed that the settings would work for and started hand tuning the parameters until I found a solution that would work at 50-60 mph. Seeing that this solution works I am submitting it but will spend more time implementing an automated tuning solution as well as a PID for the throttle.
-  
+
 ## Dependencies
 
 * cmake >= 3.5

@@ -36,7 +36,7 @@ int main()
   PID pid;
   // TODO: Initialize the pid variable.
   // Order of vars is different from lecture
-  pid.Init(4, 0.001, 100);
+  pid.Init(4, 0.0001, 100);
 
   int max_steering_value = 1;
 

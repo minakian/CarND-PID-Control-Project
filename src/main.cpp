@@ -36,7 +36,7 @@ int main()
   PID pid;
   // TODO: Initialize the pid variable.
   // Order of vars is different from lecture
-  pid.Init(0.175, 0.001, 7.25);
+  pid.Init(3, 0.001, 30);
 
   int max_steering_value = 1;
 
@@ -63,7 +63,7 @@ int main()
           * another PID controller to control the speed!
           */
           pid.UpdateError(cte);
-          steer_value = pid.TotalError();
+          steer_value = pid.TotalError()/20;
 
           if (steer_value > 1){
             steer_value = 1;
@@ -77,7 +77,7 @@ int main()
 
           json msgJson;
           msgJson["steering_angle"] = steer_value;
-          msgJson["throttle"] = 0.6;
+          msgJson["throttle"] = 0.3;
           auto msg = "42[\"steer\"," + msgJson.dump() + "]";
           std::cout << msg << std::endl;
           ws.send(msg.data(), msg.length(), uWS::OpCode::TEXT);
